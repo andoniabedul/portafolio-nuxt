@@ -14,19 +14,17 @@
         <article
           class="section-articles-item"
           data-aos="fade-right"
-          data-aos-delay="300"
+          data-aos-delay="delay"
         >
           <h1 class="section-articles-item-text shadow-box-big">
-            Me presento, soy Andoni Abedul, y tengo como hobby (y
-            afortunadamente) como profesión, el desarrollar productos que
-            mejoren el día a día de sus usuarios.
+            Soy desarrollador de software y me apasiona crear productos y soluciones que mejoren el día a día de sus usuarios.
           </h1>
         </article>
         <article
           id="special-background"
           class="section-articles-item"
           data-aos="fade-left"
-          data-aos-delay="300"
+          data-aos-delay="delay"
         >
           <div class="illustration">
             <img
@@ -44,7 +42,7 @@
           id="special-background"
           class="section-articles-item"
           data-aos="fade-right"
-          data-aos-delay="300"
+          data-aos-delay="delay"
         >
           <div class="illustration">
             <img
@@ -57,7 +55,7 @@
         <article
           class="section-articles-item"
           data-aos="fade-left"
-          data-aos-delay="300"
+          data-aos-delay="delay"
         >
           <h1 class="section-articles-item-text shadow-box-big">
             Tengo como objetivo crear y desarrollar aplicaciones con
@@ -71,19 +69,19 @@
         <article
           class="section-articles-item"
           data-aos="fade-right"
-          data-aos-delay="300"
+          :data-aos-delay="delay"
         >
           <h1 class="section-articles-item-text shadow-box-big">
-            ¿Buscas darle un impulso a tu negocio? <br />
-            ¿Lanzar esa web que siempre has querido? <br />
-            Puedo ayudarte, contáctame sin compromiso.
+            ¿Deseas impulsar tu negocio?<br/>
+            ¿Necesitas asesoramiento? <br />
+            Puedo ayudarte.
           </h1>
         </article>
         <article
           id="special-background"
           class="section-articles-item"
           data-aos="fade-left"
-          data-aos-delay="300"
+          data-aos-delay="delay"
         >
           <div class="illustration">
             <img
@@ -121,11 +119,16 @@ export default {
           '你好',
           'こんにちは',
         ],
-      },
+      }
+    }
+  },
+  computed: {
+    delay: function(){
+      return this.$device.isMobile ? 100 : 300;
     }
   },
   created() {
-    this.$options.interval = setInterval(this.setGreeting, 750)
+    this.$options.interval = setInterval(this.setGreeting, 500)
   },
   beforeDestroy() {
     clearInterval(this.$options.interval)
@@ -247,7 +250,7 @@ export default {
       background-color: var(--principal-color);
       color: var(--secondary-color);
       border: 2px solid var(--secondary-color);
-      @apply p-8 lg:p-16 text-xl lg:text-4xl rounded-lg content-end lg:self-center;
+      @apply p-8 lg:p-12 text-xl lg:text-4xl rounded-lg content-end lg:self-center;
     }
   }
 }
