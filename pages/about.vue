@@ -3,39 +3,47 @@
     <div class="about-title">
       <h1>Acerca de mi :-)</h1>
     </div>
-    <section class="about-section" id="working-on">
+    <section id="working-on" class="about-section">
       <div class="about-section-articles">
-        <article 
+        <article
           class="about-section-articles--item"
-          data-aos="fade-right" data-aos-delay="300" 
-          >
+          data-aos="fade-right"
+          data-aos-delay="300"
+        >
           <p class="about-section-articles--item-text">
-            Nací en Caracas, Venezuela. Hermano de la espuma, de las garzas, de las rosas y del sol. Desde pequeño he tenido una curiosa fascinación por la tecnología, por eso estudié Ingeniería en Informática.
+            Nací en Caracas, Venezuela. Hermano de la espuma, de las garzas, de
+            las rosas y del sol. Desde pequeño he tenido una curiosa fascinación
+            por la tecnología, por eso estudié Ingeniería en Informática.
           </p>
           <p class="about-section-articles--item-text">
-            Tengo más de 5 años de experiencia en el sector, la mayoría de estos utilizando JavaScript, pero también otros como Python y Ruby. Me considero desarrollador Full Stack, sin embargo, he estado enfocando mi experiencia al front-end. Siempre en constante aprendizaje, extendiendo así el dicho de "No se acaba un día sin que uno aprenda algo nuevo"
+            Tengo más de 5 años de experiencia en el sector, la mayoría de estos
+            utilizando JavaScript, pero también otros como Python y Ruby. Me
+            considero desarrollador Full Stack, sin embargo, he estado enfocando
+            mi experiencia al front-end. Siempre en constante aprendizaje,
+            extendiendo así el dicho de "No se acaba un día sin que uno aprenda
+            algo nuevo"
           </p>
           <p class="about-section-articles--item-text">
-            Me interesan proyectos tecnológicos distribuidos y descentralizados, como Bitcoin y Lightning Network. 
+            Me interesan proyectos tecnológicos distribuidos y descentralizados,
+            como Bitcoin y Lightning Network.
           </p>
         </article>
-        <article 
+        <article
           class="about-section-articles--item"
-          data-aos="fade-left" data-aos-delay="300" 
+          data-aos="fade-left"
+          data-aos-delay="300"
         >
           <div class="about-section-articles--item-image">
-            <img class="flex-1" src="/assets/photos/me.jpg" alt="">
+            <img class="flex-1" src="/assets/photos/me.jpg" alt="" />
           </div>
         </article>
-      </div>   
+      </div>
     </section>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="postcss">
@@ -70,7 +78,7 @@ export default {
           }
         }
       }
-    }  
+    }
   }
 }
 </style>

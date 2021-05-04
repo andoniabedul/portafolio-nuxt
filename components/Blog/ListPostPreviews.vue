@@ -1,6 +1,6 @@
 <template>
   <ul class="posts-list">
-    <li class="posts-list--item" v-for="post in posts">
+    <li v-for="post in posts" class="posts-list--item">
       {{ post.fields.title }}
     </li>
   </ul>
@@ -8,10 +8,8 @@
 
 <script>
 export default {
-  props: ['posts']
+  props: ['posts'],
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

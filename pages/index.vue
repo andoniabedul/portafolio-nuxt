@@ -1,121 +1,156 @@
 <template>
   <div class="index">
-    <section class="section" id="introduction">
+    <section id="introduction" class="section">
       <div class="flex-1 flex justify-center justify-items-center items-center">
         <h2 class="section-title">
           <span ref="greeting">
             {{ greeting.actual }}<span class="blinking-cursor">|</span>
-          </span>        
+          </span>
         </h2>
-      </div>  
+      </div>
     </section>
-    <section class="section" id="working-on">
+    <section id="working-on" class="section">
       <div class="section-articles">
-        <article 
+        <article
           class="section-articles-item"
-          data-aos="fade-right" data-aos-delay="300" 
-          >
+          data-aos="fade-right"
+          data-aos-delay="300"
+        >
           <h1 class="section-articles-item-text shadow-box-big">
-            Me presento, soy Andoni Abedul, y tengo como hobby (y afortunadamente) como profesión, el desarrollar productos que mejoren el día a día de sus usuarios. 
+            Me presento, soy Andoni Abedul, y tengo como hobby (y
+            afortunadamente) como profesión, el desarrollar productos que
+            mejoren el día a día de sus usuarios.
           </h1>
         </article>
-        <article 
-          class="section-articles-item" id="special-background"
-          data-aos="fade-left" data-aos-delay="300" 
+        <article
+          id="special-background"
+          class="section-articles-item"
+          data-aos="fade-left"
+          data-aos-delay="300"
         >
           <div class="illustration">
-            <img class="flex-1" src="/assets/illustrations/marketing-employee-working-on-marketing-strategy.svg" alt="">
+            <img
+              class="flex-1"
+              src="/assets/illustrations/marketing-employee-working-on-marketing-strategy.svg"
+              alt=""
+            />
           </div>
         </article>
-      </div>   
+      </div>
     </section>
     <section class="section">
       <div class="section-articles">
-        <article 
-          class="section-articles-item" id="special-background"
-          data-aos="fade-right" data-aos-delay="300" 
+        <article
+          id="special-background"
+          class="section-articles-item"
+          data-aos="fade-right"
+          data-aos-delay="300"
         >
           <div class="illustration">
-            <img class="flex-1" src="/assets/illustrations/girl-chilling-exploring-on-the-phone.svg" alt="">
+            <img
+              class="flex-1"
+              src="/assets/illustrations/girl-chilling-exploring-on-the-phone.svg"
+              alt=""
+            />
           </div>
         </article>
-         <article 
+        <article
           class="section-articles-item"
-          data-aos="fade-left" data-aos-delay="300" 
-          >
+          data-aos="fade-left"
+          data-aos-delay="300"
+        >
           <h1 class="section-articles-item-text shadow-box-big">
-            Tengo como objetivo crear y desarrollar aplicaciones con experiencias de usuario amenas y con el mejor rendimiento posible.
+            Tengo como objetivo crear y desarrollar aplicaciones con
+            experiencias de usuario amenas y con el mejor rendimiento posible.
           </h1>
         </article>
-      </div>   
+      </div>
     </section>
-     <section class="section">
+    <section class="section">
       <div class="section-articles">
-        <article 
+        <article
           class="section-articles-item"
-          data-aos="fade-right" data-aos-delay="300" 
-          >
+          data-aos="fade-right"
+          data-aos-delay="300"
+        >
           <h1 class="section-articles-item-text shadow-box-big">
-            ¿Buscas darle un impulso a tu negocio? <br>
-            ¿Lanzar esa web que siempre has querido? <br>
-            Puedo ayudarte, contáctame sin compromiso. 
+            ¿Buscas darle un impulso a tu negocio? <br />
+            ¿Lanzar esa web que siempre has querido? <br />
+            Puedo ayudarte, contáctame sin compromiso.
           </h1>
         </article>
-        <article 
-          class="section-articles-item" id="special-background"
-          data-aos="fade-left" data-aos-delay="300" 
+        <article
+          id="special-background"
+          class="section-articles-item"
+          data-aos="fade-left"
+          data-aos-delay="300"
         >
           <div class="illustration">
-            <img class="flex-1" src="/assets/illustrations/man-holding-binoculars-finding-something.svg" alt="">
+            <img
+              class="flex-1"
+              src="/assets/illustrations/man-holding-binoculars-finding-something.svg"
+              alt=""
+            />
           </div>
         </article>
-      </div>   
+      </div>
     </section>
   </div>
 </template>
 
 <script>
-import {mixin as VueTimers} from 'vue-timers';
+import { mixin as VueTimers } from 'vue-timers'
 
 export default {
   mixins: [VueTimers],
-  data(){
-    return { 
+  data() {
+    return {
       greeting: {
         actual: '',
         index: 0,
         letterIndex: 0,
-        list: ['Hola', 'Hello', 'Ola', 'Bonjour', 'Ciao', 'Hallo', 'Tere', 'Привет', '你好', 'こんにちは' ]
+        list: [
+          'Hola',
+          'Hello',
+          'Ola',
+          'Bonjour',
+          'Ciao',
+          'Hallo',
+          'Tere',
+          'Привет',
+          '你好',
+          'こんにちは',
+        ],
       },
     }
   },
-  methods: {
-    setGreeting(){     
-      let greeting = this.greeting.list[this.greeting.index];
-      if(!greeting) {
-        this.greeting.index = 0;
-        this.greeting.letterIndex = 0;
-        greeting = this.greeting.list[this.greeting.index];
-      }
-      const letters = greeting.split('');
-      if(this.greeting.letterIndex === greeting.length) {
-        if(this.greeting.index <= this.greeting.list.length) {
-          this.greeting.index++;
-          this.greeting.actual = '';
-        }
-        this.greeting.letterIndex = 0;
-      } else {
-        this.greeting.actual += letters[this.greeting.letterIndex];
-        this.greeting.letterIndex++;
-      }
-    }
-  },
   created() {
-    this.$options.interval = setInterval(this.setGreeting, 750);
+    this.$options.interval = setInterval(this.setGreeting, 750)
   },
-  beforeDestroy () {
-    clearInterval(this.$options.interval);
-  }
+  beforeDestroy() {
+    clearInterval(this.$options.interval)
+  },
+  methods: {
+    setGreeting() {
+      let greeting = this.greeting.list[this.greeting.index]
+      if (!greeting) {
+        this.greeting.index = 0
+        this.greeting.letterIndex = 0
+        greeting = this.greeting.list[this.greeting.index]
+      }
+      const letters = greeting.split('')
+      if (this.greeting.letterIndex === greeting.length) {
+        if (this.greeting.index <= this.greeting.list.length) {
+          this.greeting.index++
+          this.greeting.actual = ''
+        }
+        this.greeting.letterIndex = 0
+      } else {
+        this.greeting.actual += letters[this.greeting.letterIndex]
+        this.greeting.letterIndex++
+      }
+    },
+  },
 }
 </script>
 
@@ -134,7 +169,7 @@ export default {
 }
 
 .section {
-  @apply flex flex-col lg:flex-col h-screen w-full py-6;  
+  @apply flex flex-col lg:flex-col h-screen w-full py-6;
 }
 .section-title {
   @apply text-6xl lg:text-8xl align-middle;
@@ -151,7 +186,8 @@ export default {
   }
 
   @keyframes "blink" {
-    from, to {
+    from,
+    to {
       color: transparent;
     }
     50% {
@@ -160,7 +196,8 @@ export default {
   }
 
   @-moz-keyframes blink {
-    from, to {
+    from,
+    to {
       color: transparent;
     }
     50% {
@@ -169,7 +206,8 @@ export default {
   }
 
   @-webkit-keyframes "blink" {
-    from, to {
+    from,
+    to {
       color: transparent;
     }
     50% {
@@ -178,7 +216,8 @@ export default {
   }
 
   @-ms-keyframes "blink" {
-    from, to {
+    from,
+    to {
       color: transparent;
     }
     50% {
@@ -187,7 +226,8 @@ export default {
   }
 
   @-o-keyframes "blink" {
-    from, to {
+    from,
+    to {
       color: transparent;
     }
     50% {
