@@ -129,7 +129,7 @@ export default {
     @apply block lg:hidden;
   }
   &-items {
-    @apply w-full flex flex-col lg:flex-row text-sm justify-center lg:justify-end lg:content-end py-4;
+    @apply w-full flex flex-col lg:flex-row text-sm justify-center lg:justify-end lg:content-end lg:py-0 py-4;
     .nav-icon {
       color: var(--secondary-color);
       @apply w-5 h-7 mr-1;
