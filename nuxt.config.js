@@ -71,5 +71,15 @@ export default {
   },
   babel: {
     plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
+  },
+  postcss: {
+    plugins: {
+      'postcss-nested': {},
+      'postcss-responsive-type': {},
+      'postcss-hexrgba': {}
+    },
+    preset: {
+      autoprefixer: {}
+    }
   }
 }

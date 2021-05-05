@@ -246,6 +246,7 @@ export default {
   &-item {
     opacity: 1;
     @apply p-6 lg:p-12 flex-1 text-left text-white flex flex-row lg:flex-col lg:flex-grow flex-1 flex-grow-0;
+    flex-basis: auto;
     &-text {
       background-color: var(--principal-color);
       color: var(--secondary-color);
