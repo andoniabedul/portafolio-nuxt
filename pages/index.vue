@@ -241,17 +241,16 @@ export default {
 .section-articles {
   background-color: var(--principal-color);
   color: var(--secondary-color);
-  @apply h-screen w-auto flex flex-1 flex-col lg:flex-row justify-center content-between justify-items-center;
+  @apply h-screen w-auto flex flex-1 flex-col lg:flex-row md:flex-row justify-center content-between justify-items-center;
   overflow-x: hidden;
   &-item {
     opacity: 1;
-    @apply p-6 lg:p-12 flex-1 text-left text-white flex flex-row lg:flex-col lg:flex-grow flex-1 flex-grow-0;
-    flex-basis: auto;
+    @apply p-6 lg:p-12 flex-1 text-left text-white flex flex-row lg:flex-col flex-initial lg:flex-1 md:flex-col md:flex-1;
     &-text {
       background-color: var(--principal-color);
       color: var(--secondary-color);
       border: 2px solid var(--secondary-color);
-      @apply p-8 lg:p-12 text-xl lg:text-4xl rounded-lg content-end lg:self-center;
+      @apply p-8 lg:p-12 lg:w-auto w-full sm:text-xl md:text-2xl lg:text-4xl rounded-lg content-end lg:self-center;
     }
   }
 }
