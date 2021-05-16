@@ -41,6 +41,7 @@ export default {
     '@nuxtjs/device',
     '@nuxtjs/axios',
     '@nuxtjs/color-mode',
+    '@nuxtjs/google-analytics'
   ],
   env: {
     CTF_SPACE_ID: contentfulConfig.CTF_SPACE_ID,
@@ -81,5 +82,8 @@ export default {
     preset: {
       autoprefixer: {}
     }
+  },
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID
   }
 }
