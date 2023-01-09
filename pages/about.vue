@@ -27,6 +27,12 @@
             Me interesan proyectos tecnológicos distribuidos y descentralizados,
             como Bitcoin y Lightning Network.
           </p>
+          <p style="text-align: left;" class="about-section-articles--item-text">
+            <label style="color: black; text-align: left;" for="nostr_pub_key">
+              Nostr Public Key
+            </label>
+            <input style="color: black; text-align: left;" name="nostr_pub_key" type="text" value="npub1uhzqmwea7u28t3s8kqtpa9pyv798u6cgtghauwx833fefpwvslqq67lw3g" readonly="">
+          </p>
         </article>
         <article
           class="about-section-articles--item"
@@ -34,7 +40,7 @@
           data-aos-delay="300"
         >
           <div class="about-section-articles--item-image">
-            <img class="flex-1" src="/assets/photos/me.jpg" alt="" />
+            <img class="flex-1" src="/assets/photos/me.png" alt="" />
           </div>
         </article>
       </div>
