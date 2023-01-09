@@ -40,8 +40,5 @@
     "tailwindcss-dark-mode": "^1.1.7",
     "vue-cryptojs": "^2.1.5",
     "vue-timers": "^2.0.4"
-  },
-  "devDependencies": {
-    "@nuxtjs/google-analytics": "^2.4.0"
   }
 }
