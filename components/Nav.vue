@@ -66,55 +66,55 @@
   </nav>
 </template>
 
-<script>
-const isClient = process.browser
-export default {
-  data() {
-    return {
-      name: 'Andoni Abedul',
-      showMenu: !this.$device.isMobile,
-    }
-  },
-  created() {
-    if (isClient) {
-      window.addEventListener('scroll', this.handleScroll)
-    }
-  },
-  destroyed() {
-    if (isClient) {
-      window.removeEventListener('scroll', this.handleScroll)
-    }
-  },
-  methods: {
-    hasClass(className, el) {
-      return el.classList.contains(className)
-    },
-    setClass(className, el) {
-      el.classList.add(className)
-    },
-    deleteClass(className, el) {
-      el.classList.remove(className)
-    },
-    handleScroll(event) {
-      if (!isClient) return
-      const nav = document.querySelector('.nav')
-      const boundary = 50
-      if (window.scrollY > boundary && !this.hasClass('border-box', nav)) {
-        this.setClass('border-box', nav)
-        this.setClass('shadow-box', nav)
-      } else if (window.scrollY < boundary) {
-        this.deleteClass('shadow-box', nav)
-        this.deleteClass('border-box', nav)
-      }
-    },
-    handleMenu(){
-      const nav = document.querySelector('.nav')
-      this.showMenu = !this.showMenu
-      if(this.showMenu) this.setClass('border-box', nav)
-      else this.deleteClass('border-box', nav)
-    },
-  },
+<script setup lang="ts">
+const { isMobile } = useDevice()
+
+const name = ref('Andoni Abedul')
+const showMenu = ref(!isMobile)
+
+const hasClass = (className: string, el: Element | null): boolean => {
+  return el?.classList.contains(className) ?? false
 }
+
+const setClass = (className: string, el: Element | null): void => {
+  el?.classList.add(className)
+}
+
+const deleteClass = (className: string, el: Element | null): void => {
+  el?.classList.remove(className)
+}
+
+const handleScroll = (): void => {
+  if (!import.meta.client) return
+  const nav = document.querySelector('.nav')
+  const boundary = 50
+  if (window.scrollY > boundary && !hasClass('border-box', nav)) {
+    setClass('border-box', nav)
+    setClass('shadow-box', nav)
+  } else if (window.scrollY < boundary) {
+    deleteClass('shadow-box', nav)
+    deleteClass('border-box', nav)
+  }
+}
+
+const handleMenu = (): void => {
+  const nav = document.querySelector('.nav')
+  showMenu.value = !showMenu.value
+  if (showMenu.value) setClass('border-box', nav)
+  else deleteClass('border-box', nav)
+}
+
+onMounted(() => {
+  if (import.meta.client) {
+    window.addEventListener('scroll', handleScroll)
+  }
+})
+
+onUnmounted(() => {
+  if (import.meta.client) {
+    window.removeEventListener('scroll', handleScroll)
+  }
+})
 </script>
 
 <style lang="postcss">

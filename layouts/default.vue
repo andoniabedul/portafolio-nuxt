@@ -2,7 +2,7 @@
   <div id='main-content theme-night'>
     <Nav />
     <main>
-      <Nuxt />
+      <slot />
     </main>
     <Footer />
     <button class="change-theme shadow-box" @click="changeMode">
@@ -12,43 +12,23 @@
         <svg v-else class="change-theme--icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
         </svg>
-        <span v-if="this.$device.isMobile === false  " class="change-theme--message">
-          I prefer {{themeMode}}
+        <span v-if="!isMobile" class="change-theme--message">
+          I prefer {{ themeMode }}
         </span>
     </button>
   </div>
 </template>
-<script>
-import Nav from '../components/Nav';
-import Footer from '../components/Footer';
 
-export default {
-  components: {
-    Nav,
-    Footer
-  },
-  data () {
-    return {
-      theme: this.$colorMode.preference
-    }
-  },
-  methods: {
-    changeMode() {
-      this.$colorMode.preference = 
-            this.$colorMode.preference === 'light' ? 'dark' : 'light'
-    }
-  },
-  computed: {
-    themeMode() {
-      return this.$colorMode.preference === 'light' ? 'dark' : 'light'
-    },
-    themeIcon() {
-      return this.$colorMode.preference === 'light' ? 'sun' : 'moon'
-    },
-    isMobile() {
-      return this.$device.isMobile;
-    }
-  }
+<script setup lang="ts">
+const colorMode = useColorMode()
+const { isMobile } = useDevice()
+
+const themeMode = computed<'dark' | 'light'>(() =>
+  colorMode.value === 'light' ? 'dark' : 'light'
+)
+
+const changeMode = (): void => {
+  colorMode.preference = colorMode.value === 'light' ? 'dark' : 'light'
 }
 </script>
 
@@ -84,14 +64,18 @@ html {
 main {
   min-height: 80vh;
 }
-.dark-mode {
+html.dark-mode {
   --principal-color: black;
   --secondary-color: white;
-  @apply bg-black text-white;
 }
-.light-mode {
+html.light-mode {
   --principal-color: white;
   --secondary-color: black;
+}
+html.dark-mode body {
+  @apply bg-black text-white;
+}
+html.light-mode body {
   @apply bg-white text-black;
 }
 

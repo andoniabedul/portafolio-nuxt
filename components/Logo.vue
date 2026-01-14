@@ -21,6 +21,9 @@
   </svg>
 </template>
 
+<script setup lang="ts">
+</script>
+
 <style>
 .NuxtLogo {
   animation: 1s appear;

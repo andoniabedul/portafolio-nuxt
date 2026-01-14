@@ -4,7 +4,7 @@
       <div class="flex-1 flex justify-center justify-items-center items-center">
         <h2 class="section-title">
           <span ref="greeting">
-            {{ greeting.actual }}<span class="blinking-cursor">|</span>
+            {{ displayText }}<span class="blinking-cursor">|</span>
           </span>
         </h2>
       </div>
@@ -96,65 +96,49 @@
   </div>
 </template>
 
-<script>
-import { mixin as VueTimers } from 'vue-timers'
+<script setup lang="ts">
+const greetings = [
+  'Hola',
+  'Hello',
+  'Ola',
+  'Bonjour',
+  'Ciao',
+  'Hallo',
+  'Tere',
+  'Привет',
+  '你好',
+  'こんにちは',
+]
 
-export default {
-  mixins: [VueTimers],
-  data() {
-    return {
-      greeting: {
-        actual: '',
-        index: 0,
-        letterIndex: 0,
-        list: [
-          'Hola',
-          'Hello',
-          'Ola',
-          'Bonjour',
-          'Ciao',
-          'Hallo',
-          'Tere',
-          'Привет',
-          '你好',
-          'こんにちは',
-        ],
-      }
-    }
-  },
-  computed: {
-    delay: function(){
-      return this.$device.isMobile ? 100 : 300;
-    }
-  },
-  created() {
-    this.$options.interval = setInterval(this.setGreeting, 500)
-  },
-  beforeDestroy() {
-    clearInterval(this.$options.interval)
-  },
-  methods: {
-    setGreeting() {
-      let greeting = this.greeting.list[this.greeting.index]
-      if (!greeting) {
-        this.greeting.index = 0
-        this.greeting.letterIndex = 0
-        greeting = this.greeting.list[this.greeting.index]
-      }
-      const letters = greeting.split('')
-      if (this.greeting.letterIndex === greeting.length) {
-        if (this.greeting.index <= this.greeting.list.length) {
-          this.greeting.index++
-          this.greeting.actual = ''
-        }
-        this.greeting.letterIndex = 0
-      } else {
-        this.greeting.actual += letters[this.greeting.letterIndex]
-        this.greeting.letterIndex++
-      }
-    },
-  },
+const displayText = ref('')
+const wordIndex = ref(0)
+const letterIndex = ref(0)
+
+const { isMobile } = useDevice()
+const delay = computed(() => isMobile ? 100 : 300)
+
+let interval: ReturnType<typeof setInterval>
+
+const setGreeting = (): void => {
+  const word = greetings[wordIndex.value]
+
+  if (letterIndex.value < word.length) {
+    displayText.value += word[letterIndex.value]
+    letterIndex.value++
+  } else {
+    wordIndex.value = (wordIndex.value + 1) % greetings.length
+    letterIndex.value = 0
+    displayText.value = ''
+  }
 }
+
+onMounted(() => {
+  interval = setInterval(setGreeting, 400)
+})
+
+onUnmounted(() => {
+  clearInterval(interval)
+})
 </script>
 
 <style lang="postcss">

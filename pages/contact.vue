@@ -94,18 +94,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      from: '',
-      subject: '',
-      message: '',
-      sended: false,
-      encripted: false,
-    }
-  },
-}
+<script setup lang="ts">
+const from = ref('')
+const subject = ref('')
+const message = ref('')
+const sended = ref(false)
+const encripted = ref(false)
 </script>
 
 <style lang="postcss">
